@@ -1,0 +1,35 @@
+[
+  {
+    "id": "2c59e6a7-4af6-473b-bd92-b4c83cf036c9",
+    "title": "Producto 1",
+    "description": "Basketball 1",
+    "price": 200,
+    "thumbnail": "https://static.wikia.nocookie.net/heroe/images/4/44/Rayo_McQueen_CAeeC.png/revision/latest?cb=20231118102622&path-prefix=es",
+    "code": "BSK001",
+    "stock": 40,
+    "category": "Sports",
+    "status": true
+  },
+  {
+    "id": "6d18296c-7b89-433f-83d6-6266e5e8d80e",
+    "title": "Producto 2",
+    "description": "Basketball 2",
+    "price": 450,
+    "thumbnail": "https://static.wikia.nocookie.net/heroe/images/4/44/Rayo_McQueen_CAeeC.png/revision/latest?cb=20231118102622&path-prefix=es",
+    "code": "BSK031",
+    "stock": 23,
+    "category": "Sports",
+    "status": true
+  },
+  {
+    "id": "9a9f378d-0e50-486e-8d7c-60818c9ff325",
+    "title": "Producto 3",
+    "description": "Basketball 3",
+    "price": 568,
+    "thumbnail": "https://static.wikia.nocookie.net/heroe/images/4/44/Rayo_McQueen_CAeeC.png/revision/latest?cb=20231118102622&path-prefix=es",
+    "code": "BSK035",
+    "stock": 124,
+    "category": "Sports",
+    "status": true
+  }
+]
