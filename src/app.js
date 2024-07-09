@@ -1,22 +1,30 @@
 import express from "express";
-import productsRouter from './router/product.router.js';
-import cartsRouter from './router/cart.router.js';
+import routes from "./routes/index.js";
+import { Server } from "socket.io";
+import handlebars from "express-handlebars";
+import viewsRoutes from "./routes/views.routes.js";
+import __dirname from "./dirname.js";
 
-const PORT = 8080;
 const app = express();
 
-app.use(express.json());
+const PORT = 8080;
+
 app.use(express.urlencoded({ extended: true }));
-// app.use(express.static("public"));
+app.use(express.json());
+app.engine("handlebars", handlebars.engine());
+app.set("views", __dirname + "/views");
+app.set("view engine", "handlebars");
+app.use(express.static("public"));
 
-app.use('/api', productsRouter);
-app.use('/api', cartsRouter);
+app.use("/api", routes);
+app.use("/", viewsRoutes);
 
-app.use('/',(req,res)=>{
-    res.send('asdasdasd')
-})
-
-app.listen(PORT, () => {
-    console.log(`Server listening on port: ${PORT}`);
+const httpServer = app.listen(PORT, () => {
+  console.log(`Server listening on port: ${PORT}`);
 });
 
+export const io = new Server(httpServer);
+
+io.on("connection", (socket) => {
+  console.log(`Nuevo cliente conectado: ${socket.id}`);
+});
