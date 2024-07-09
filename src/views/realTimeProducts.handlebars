@@ -1,23 +1,49 @@
 {{! Formulario para agregar un producto }}
-<div class="d-flex p-5">
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title mb-4">Agregar Producto</h2>
+          <form id="addForm">
+            <div class="form-group">
+              <label for="title">Nombre del producto</label>
+              <input id="title" class="form-control" type="text" name="title" placeholder="Nombre del producto" />
+            </div>
+            <div class="form-group">
+              <label for="price">Precio del producto</label>
+              <input id="price" class="form-control" type="text" name="price" placeholder="Precio del producto" />
+            </div>
+            <div class="form-group">
+              <label for="description">Descripción del producto</label>
+              <input id="description" class="form-control" type="text" name="description"
+                placeholder="Descripción del producto" />
+            </div>
+            <button type="submit" class="btn btn-primary w-100 mt-3">Agregar producto</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
-  <form class="d-flex flex-column gap-2 m-3" id="addForm">
-    <input id="title" type="text" name="title" placeholder="Nombre del producto" />
-    <input id="price" type="text" name="price" placeholder="Precio del producto" />
-    <input id="description" type="text" name="description" placeholder="Descripción del producto" />
-    <button type="submit">Agregar producto</button>
-  </form>
-
-  {{! Formulario para eliminar un producto }}
-
-  <form class="d-flex flex-column gap-2 m-3" id="deleteForm" >
-    <input id="id" type="text" name="id" placeholder="ID del producto" />
-    <button type="submit">Eliminar producto</button>
-  </form>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title mb-4">Eliminar Producto</h2>
+          <form id="deleteForm">
+            <div class="form-group">
+              <label for="id">ID del producto</label>
+              <input id="id" class="form-control" type="text" name="id" placeholder="ID del producto" />
+            </div>
+            <button type="submit" class="btn btn-danger w-100 mt-3">Eliminar producto</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 {{! Mostramos todos los productos que recibimos }}
-<div id="productsList"></div>
+<div class="d-flex justify-content-center align-items-center" id="productsList"></div>
 
 
 <script src="/socket.io/socket.io.js"></script>

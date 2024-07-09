@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
 router.get("/realtimeproducts", async (req, res) => {
   const products = await productManager.getProducts();
   io.on("connection", (socket) => {
-    console.log("Nuevo cliente conectado en Real Times Products");
+    console.log(`Nuevo cliente conectado en Realtime Products con ID: ${socket.id}`);
     socket.emit("products", products);
   });
 
@@ -20,7 +20,6 @@ router.get("/realtimeproducts", async (req, res) => {
 });
 
 router.post("/realtimeproducts", async (req, res) => {
-  console.log(req.body);
   await productManager.addProduct(req.body);
   const products = await productManager.getProducts();
   io.emit("products", products);
@@ -30,7 +29,6 @@ router.post("/realtimeproducts", async (req, res) => {
 
 router.delete("/realtimeproducts", async (req, res) => {
   const { id } = req.body;
-  console.log(id);
   await productManager.deleteProduct(Number(id));
   const products = await productManager.getProducts();
   io.emit("products", products);

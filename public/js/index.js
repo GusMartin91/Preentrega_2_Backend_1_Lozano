@@ -1,5 +1,4 @@
 const socket = io();
-
 const productsList = document.getElementById("productsList");
 const addForm = document.getElementById("addForm");
 const title = document.getElementById("title");
@@ -9,9 +8,7 @@ const deleteForm = document.getElementById("deleteForm");
 
 // Recibimos los productos
 socket.on("products", (data) => {
-  console.log(data);
   productsList.innerHTML = "";
-
   data.forEach((product) => {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -24,16 +21,13 @@ socket.on("products", (data) => {
         <p class="card-text">$${product.price}</p>
       </div>
     `;
-
     productsList.appendChild(card);
   });
 });
 
 // Enviamos el producto
-
 addForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-
   await fetch("/realtimeproducts", {
     method: "POST",
     headers: {
@@ -44,11 +38,9 @@ addForm.addEventListener("submit", async (event) => {
 });
 
 // Eliminar el productos
-
 deleteForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const id = document.getElementById("id");
-  console.log(id);
   await fetch("/realtimeproducts", {
     method: "DELETE",
     headers: {
